@@ -1,10 +1,10 @@
-const USER_PATHS = {
+const AUTH_API = {
   VERSION: "/v1",
   ROOT: "/",
-  USER_API: "/user",
-  SIGNUP: "/signup",
-  LOGIN: "/login",
-  LOGOUT: "/logout"
+  AUTH_EP: "/auth", //EP stands for endpoint
+  SIGNUP_EP: "/signup",
+  LOGIN_EP: "/login",
+  LOGOUT_EP: "/logout"
 };
 
-export default USER_PATHS;
+export default AUTH_API;

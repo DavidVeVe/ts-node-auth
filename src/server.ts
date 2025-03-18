@@ -1,10 +1,10 @@
 import express, { json } from "express";
 import cors from "cors";
 import authRouter from "./routes/auth/auth-router";
-import USER_PATHS from "./routes/auth/constants";
+import AUTH_API from "./routes/auth/constants";
 import config from "../config";
 
-const { USER_API } = USER_PATHS;
+const { AUTH_EP } = AUTH_API;
 const { PORT } = config;
 
 const app = express();
@@ -20,7 +20,7 @@ app.use(json());
 // 6.SSO or SAML
 // 7.JWT
 // 8.Session management
-app.use(USER_API, authRouter);
+app.use(AUTH_EP, authRouter);
 
 app.listen(PORT, () => {
   console.log("App running on port: " + PORT);

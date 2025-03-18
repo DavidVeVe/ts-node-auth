@@ -1,7 +1,7 @@
 import { Router } from "express";
-import USER_PATHS from "./constants.js";
+import AUTH_API from "./constants";
 
-const { ROOT, SIGNUP, LOGIN, LOGOUT } = USER_PATHS;
+const { ROOT, SIGNUP_EP, LOGIN_EP, LOGOUT_EP } = AUTH_API;
 
 type User = {
   name: string;
@@ -27,7 +27,7 @@ const authRouter = () => {
   });
 
   //Creates new user
-  router.post(SIGNUP, (req, res) => {
+  router.post(SIGNUP_EP, (req, res) => {
     res.status(200).json({
       response: {
         data: "Sign up this is"
@@ -36,7 +36,7 @@ const authRouter = () => {
   });
 
   //Logs in a user
-  router.post(LOGIN, (req, res) => {
+  router.post(LOGIN_EP, (req, res) => {
     res.status(200).json({
       response: {
         data: "Log in this is"
@@ -45,7 +45,7 @@ const authRouter = () => {
   });
 
   //Logs a user out
-  router.post(LOGOUT, (req, res) => {
+  router.post(LOGOUT_EP, (req, res) => {
     res.status(200).json({
       response: {
         data: "Log out this is"
