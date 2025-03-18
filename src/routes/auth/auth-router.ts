@@ -8,13 +8,13 @@ type User = {
   lastName: string;
 };
 
-const users: User[] = [{ name: "Carolina", lastName: "Uribe" }];
+const users: User[] = [{ name: "Toronto", lastName: "Uribe" }];
 
 const authRouter = () => {
   const router = Router();
 
   //Retrieves all users
-  router.get(ROOT, (req, res) => {
+  router.get(ROOT, (req, res, next) => {
     try {
       res.status(200).json({
         response: {
