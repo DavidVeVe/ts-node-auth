@@ -1,5 +1,5 @@
 import User from "../../models/User";
-import { AuthMiddleware, UserType } from "../../types/auth";
+import { AuthMiddleware, User as UserType } from "../../types/auth";
 
 const authMiddlewares: AuthMiddleware = {
   SignUpMiddleware: async (req, res, next) => {
@@ -14,7 +14,6 @@ const authMiddlewares: AuthMiddleware = {
       });
     }
 
-    console.log("Successfully created");
     next();
   },
 

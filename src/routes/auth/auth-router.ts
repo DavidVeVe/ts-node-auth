@@ -1,11 +1,11 @@
 import { Router } from "express";
 import AUTH_API from "./constants";
 import authMiddlewares from "../../middlewares/auth/authMiddleware";
-import { UserType } from "../../types/auth";
+import { User } from "../../types/auth";
 
 const { ROOT, SIGNUP_EP, LOGIN_EP, LOGOUT_EP } = AUTH_API;
 
-const users: UserType[] = [
+const users: User[] = [
   {
     name: "Toronto",
     lastName: "Uribe",

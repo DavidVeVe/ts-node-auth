@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-type UserType = {
+type User = {
   name: string;
   lastName: string;
 } & LoginBody;
@@ -21,4 +21,4 @@ interface AuthMiddleware {
   LogInMiddleware: AuthFunctionMiddleware;
 }
 
-export { UserType, AuthMiddleware, LoginBody };
+export { User, AuthMiddleware, LoginBody };
