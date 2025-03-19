@@ -35,7 +35,7 @@ const authRouter = () => {
   router.post(SIGNUP_EP, SignUpMiddleware, (req, res) => {
     res.status(200).json({
       response: {
-        data: "Sign up this is"
+        data: "User successfully created."
       }
     });
   });
@@ -44,7 +44,7 @@ const authRouter = () => {
   router.post(LOGIN_EP, LogInMiddleware, (req, res) => {
     res.status(200).json({
       response: {
-        data: "Log in this is"
+        data: "User"
       }
     });
   });
