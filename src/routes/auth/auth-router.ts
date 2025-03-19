@@ -1,5 +1,5 @@
 import { Router } from "express";
-import AUTH_API from "./constants";
+import { AUTH_API } from "./constants";
 import authMiddlewares from "../../middlewares/auth/authMiddleware";
 import { User } from "../../types/auth";
 
