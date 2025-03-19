@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(json());
 
-// 1.Add routes
+// 1.Add routes CHECK
 // 2.Add input validation and sanitization
 // 3.Review and add cookies or sesion persistance
 // 4.Token and refresh token
