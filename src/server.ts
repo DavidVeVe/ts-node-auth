@@ -1,7 +1,7 @@
 import express, { json } from "express";
 import cors from "cors";
-import authRouter from "./routes/auth/auth-router";
-import AUTH_API from "./routes/auth/constants";
+import authRouter from "./routes/auth/authRoutes";
+import { AUTH_API } from "./shared/constants/authConstants";
 import config from "../config";
 
 const { AUTH_EP } = AUTH_API;

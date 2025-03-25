@@ -1,17 +1,21 @@
 import { Router } from "express";
-import { AUTH_API } from "./constants";
+import { AUTH_API } from "../../shared/constants/authConstants";
 import authMiddlewares from "../../middlewares/auth/authMiddleware";
-import { User } from "../../types/auth";
+import { IUser } from "../../types/user.types";
 
 const { ROOT, SIGNUP_EP, LOGIN_EP, LOGOUT_EP } = AUTH_API;
 
-const users: User[] = [
+const users: IUser[] = [
   {
-    name: "Toronto",
-    lastName: "Uribe",
+    firstname: "Toronto",
+    lastname: "Uribe",
     email: "toronto@gmail.com",
-    password: "123456"
-  }
+    password: "123456",
+    _id: "test",
+    role: "user",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
 ];
 
 const { SignUpMiddleware, LogInMiddleware } = authMiddlewares;
@@ -23,8 +27,8 @@ const authRouter = () => {
     try {
       res.status(200).json({
         response: {
-          data: users
-        }
+          data: users,
+        },
       });
     } catch (error) {
       console.log(error);
@@ -35,8 +39,8 @@ const authRouter = () => {
   router.post(SIGNUP_EP, SignUpMiddleware, (req, res) => {
     res.status(200).json({
       response: {
-        data: "User successfully created."
-      }
+        data: "User successfully created.",
+      },
     });
   });
 
@@ -44,8 +48,8 @@ const authRouter = () => {
   router.post(LOGIN_EP, LogInMiddleware, (req, res) => {
     res.status(200).json({
       response: {
-        data: "User"
-      }
+        data: "User",
+      },
     });
   });
 
@@ -53,8 +57,8 @@ const authRouter = () => {
   router.post(LOGOUT_EP, (req, res) => {
     res.status(200).json({
       response: {
-        data: "Log out this is"
-      }
+        data: "Log out this is",
+      },
     });
   });
 
