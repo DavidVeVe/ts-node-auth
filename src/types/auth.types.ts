@@ -8,16 +8,16 @@ import { IUser } from "./user.types";
 //   password: string;
 // };
 
-// type AuthFunctionMiddleware = (
-//   req: Request,
-//   res: Response,
-//   next: NextFunction
-// ) => Promise<void>;
+type AuthFunctionMiddleware = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => Promise<void>;
 
-// interface AuthMiddleware {
-//   SignUpMiddleware: AuthFunctionMiddleware;
-//   LogInMiddleware: AuthFunctionMiddleware;
-// }
+interface AuthMiddleware {
+  SignUpMiddleware: AuthFunctionMiddleware;
+  LogInMiddleware: AuthFunctionMiddleware;
+}
 
 // type User = z.infer<typeof UserSchema>;
 
@@ -26,9 +26,14 @@ interface ILoginInput {
   password: string;
 }
 
+interface ISignupInput extends ILoginInput {
+  firstname: string;
+  lastname: string;
+}
+
 interface IAuthResponse {
   token: string;
   user: Omit<IUser, "password">;
 }
 
-export {};
+export { ILoginInput, ISignupInput, IAuthResponse, AuthMiddleware };

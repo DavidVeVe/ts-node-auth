@@ -2,7 +2,7 @@ import { z } from "zod";
 import {
   EMAIL_REGEXP,
   INPUT_ERROR_MSG,
-  PASSWORD_REGEXP
+  PASSWORD_REGEXP,
 } from "../shared/constants/authConstants";
 
 const { name_lastname, email, password } = INPUT_ERROR_MSG;
@@ -28,7 +28,7 @@ const signupSchema = z.object({
     .string({ required_error: password.required })
     .min(8, password.minlength)
     .max(1024, password.maxlength)
-    .regex(PASSWORD_REGEXP, password.invalid)
+    .regex(PASSWORD_REGEXP, password.invalid),
 });
 
 const loginSchema = z.object({
@@ -42,7 +42,7 @@ const loginSchema = z.object({
     .string({ required_error: password.required })
     .min(8, password.minlength)
     .max(1024, password.maxlength)
-    .regex(PASSWORD_REGEXP, password.invalid)
+    .regex(PASSWORD_REGEXP, password.invalid),
 });
 
 export type SignupInput = z.infer<typeof signupSchema>;

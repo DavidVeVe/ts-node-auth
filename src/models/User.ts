@@ -34,7 +34,7 @@ const userSchema = new Schema<IUser>(
       required: [true, password.required],
       minlength: [8, password.minlength],
       maxlength: [1024, password.maxlength],
-      match: [PASSWORD_REGEXP, password.invalid],
+      match: [PASSWORD_REGEXP, "Testing"],
     },
     role: { type: String, enum: ["user", "admin"], default: "user" },
     createdAt: { type: Date, default: Date.now },

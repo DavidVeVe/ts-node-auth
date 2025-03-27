@@ -9,11 +9,12 @@ interface IUser {
   updatedAt: Date;
 }
 
-interface IUserInput {
-  firstname?: string;
-  lastname?: string;
-  email: string;
-  password: string;
-}
+// interface IUserInput {
+//   firstname?: string;
+//   lastname?: string;
+//   email: string;
+//   password: string;
+// }
 
-export { IUser, IUserInput };
+// export { IUser, IUserInput };
+export { IUser };
