@@ -79,11 +79,13 @@ class AuthController {
 
   static async getProfile(req: Request, res: Response) {
     try {
-      const user = await User.findById(req.user._id);
-      res.json({
-        status: "succcess",
-        data: { user }
-      });
+      if (req.user && req.user._id) {
+        const user = await User.findById(req.user._id);
+        res.json({
+          status: "succcess",
+          data: { user }
+        });
+      }
     } catch (error) {
       res.status(500).json({
         status: "error",
@@ -92,3 +94,5 @@ class AuthController {
     }
   }
 }
+
+export { AuthController };

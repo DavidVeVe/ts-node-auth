@@ -11,7 +11,7 @@
     "src/**/*",
     "tests/**/*",
     "config.ts",
-    "src/shared/constants/authConstants.ts"
+    "src/shared/constants/auth.constants.ts"
   ],
   "exclude": ["node_modules"]
 }

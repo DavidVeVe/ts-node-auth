@@ -1,24 +1,15 @@
 import { Router } from "express";
-import { AUTH_API } from "../../shared/constants/authConstants";
-import authMiddlewares from "../../middlewares/auth/authMiddleware";
+import { AUTH_API } from "../../shared/constants/auth.constants";
+import { validateRequest } from "../../middlewares/auth/validation.middleware";
 import { IUser } from "../../types/user.types";
+import { loginSchema, signupSchema } from "../../schemas/auth.schema";
+import { AuthController } from "../../controllers/auth.controller";
+import passport from "passport";
+import { authenticate } from "../../middlewares/auth/auth.middleware";
 
-const { ROOT, SIGNUP_EP, LOGIN_EP, LOGOUT_EP } = AUTH_API;
+const { ROOT, SIGNUP_EP, LOGIN_EP, LOGOUT_EP, PROFILE } = AUTH_API;
 
-const users: IUser[] = [
-  {
-    firstname: "Toronto",
-    lastname: "Uribe",
-    email: "toronto@gmail.com",
-    password: "123456",
-    _id: "test",
-    role: "user",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-];
-
-const { SignUpMiddleware, LogInMiddleware } = authMiddlewares;
+// const { SignUpMiddleware, LogInMiddleware } = authMiddlewares;
 
 const authRouter = () => {
   const router = Router();
@@ -27,8 +18,8 @@ const authRouter = () => {
     try {
       res.status(200).json({
         response: {
-          data: users,
-        },
+          data: []
+        }
       });
     } catch (error) {
       console.log(error);
@@ -36,31 +27,20 @@ const authRouter = () => {
   });
 
   //Creates new user
-  router.post(SIGNUP_EP, SignUpMiddleware, (req, res) => {
-    res.status(200).json({
-      response: {
-        data: "User successfully created.",
-      },
-    });
-  });
+  router.post(SIGNUP_EP, validateRequest(signupSchema), AuthController.signup);
 
   //Logs in a user
-  router.post(LOGIN_EP, LogInMiddleware, (req, res) => {
-    res.status(200).json({
-      response: {
-        data: "User",
-      },
-    });
-  });
+  router.post(
+    LOGIN_EP,
+    validateRequest(loginSchema),
+    passport.authenticate("local", { session: false }),
+    AuthController.login
+  );
 
   //Logs a user out
-  router.post(LOGOUT_EP, (req, res) => {
-    res.status(200).json({
-      response: {
-        data: "Log out this is",
-      },
-    });
-  });
+  router.post(LOGOUT_EP, authenticate, AuthController.logout);
+
+  router.post(PROFILE, authenticate, AuthController.getProfile);
 
   return router;
 };

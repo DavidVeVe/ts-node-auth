@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { Error } from "mongoose";
 import User from "../../models/User";
-import { INPUT_ERROR_MSG } from "../../shared/constants/authConstants";
+import { INPUT_ERROR_MSG } from "../../shared/constants/auth.constants";
 import { ISignupInput, AuthMiddleware } from "../../types/auth.types";
 import passport from "passport";
 import { IUser } from "../../types/user.types";

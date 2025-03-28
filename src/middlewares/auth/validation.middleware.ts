@@ -11,12 +11,12 @@ const validateRequest = (schema: AnyZodObject) => {
         return res.status(400).json({
           status: "error",
           errors: error.errors.map(err => ({
-            field: err.path.join("."),
-            message: err.message,
-          })),
+            field: err.path.join(""),
+            message: err.message
+          }))
         });
       }
-      next();
+      next(error);
     }
   };
 };

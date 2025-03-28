@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { z } from "zod";
-import { INPUT_ERROR_MSG } from "../shared/constants/authConstants";
+import { INPUT_ERROR_MSG } from "../shared/constants/auth.constants";
 import { IUser } from "./user.types";
 
 // type LoginBody = {
